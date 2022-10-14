@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>${customer.id }번 고객 정보 수정</h1>
-
+	<a href="${pageContext.request.contextPath }/Servlet23">고객 리스트 확인</a>
 	<form action="${pageContext.request.contextPath }/Servlet30" method="post">
 		<input type="hidden" name="id" value="${customer.id }">
 		이름 : <input type="text" name="name" value="${customer.name }"> <br>
@@ -20,6 +20,7 @@
 		도시 : <input type="text" name="city" value="${customer.city }"> <br>
 		국가 : <input type="text" name="country" value="${customer.country }"> <br>
 		<input type="submit" value="수정">
+		<input type="button" value="초기화" onclick="location.href='${pageContext.request.contextPath }/Servlet30?id=${customer.id }'">
 	</form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

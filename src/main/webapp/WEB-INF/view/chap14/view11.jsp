@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>새 고객 등록</h1>
-
+	<a href="${pageContext.request.contextPath }/Servlet23">고객 리스트 확인</a>
 	<form action="${pageContext.request.contextPath }/Servlet28" method="post">
 		이름 <input type="text" name="name"> <br>
 		별칭 <input type="text" name="contactName"> <br>

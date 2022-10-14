@@ -19,6 +19,7 @@
 	<form action="">
 		<input type="text" name="keyword" value="${param.keyword }">
 		<input type="submit" value="이름검색">
+		<input type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath }/Servlet30?id=${customers[0].id }'">
 	</form>
 	
 	<table class="table">
