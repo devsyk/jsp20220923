@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Servlet28
@@ -45,12 +46,13 @@ public class Servlet28 extends HttpServlet {
 		String address = request.getParameter("address");
 		String city = request.getParameter("city");
 		String country = request.getParameter("country");
+		String contactName = request.getParameter("contactName");
 		
 		// 2. 가공
 		
 		// 3. business logic (insert into)
-		String sql = "INSERT INTO Customers (CustomerName, Address, City, Country) "
-				+ "VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO Customers (CustomerName, Address, City, Country, ContactName) "
+				+ "VALUES (?, ?, ?, ?, ?)";
 		
 		ServletContext application = request.getServletContext();
 		String url = application.getAttribute("jdbc.url").toString();
@@ -66,6 +68,7 @@ public class Servlet28 extends HttpServlet {
 			pstmt.setString(2, address);
 			pstmt.setString(3, city);
 			pstmt.setString(4, country);
+			pstmt.setString(5, contactName);
 
 			int cnt = pstmt.executeUpdate();
 
@@ -73,8 +76,10 @@ public class Servlet28 extends HttpServlet {
 			
 			// 5. forward / redirect
 			if (cnt == 1) {
-				String path = request.getContextPath() + "/Servlet23";
-				response.sendRedirect(path);
+				HttpSession session = request.getSession();
+				session.setAttribute("message", "새 고객이 등록되었습니다.");
+				
+				response.sendRedirect(request.getContextPath() + "/Servlet23");
 			}
 
 		} catch (Exception e) {

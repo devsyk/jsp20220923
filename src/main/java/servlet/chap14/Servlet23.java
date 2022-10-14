@@ -43,7 +43,7 @@ public class Servlet23 extends HttpServlet {
 		}
 		keyword = "%" + keyword + "%";
 
-		String sql = "SELECT CustomerID, CustomerName, Address, City, Country "
+		String sql = "SELECT CustomerID, CustomerName, ContactName, Address, City, Country "
 				+ "FROM Customers "
 				+ "WHERE CustomerName LIKE ?";
 
@@ -70,7 +70,8 @@ public class Servlet23 extends HttpServlet {
 					c.setId(rs.getInt("customerId"));
 					c.setCity(rs.getString("city"));
 					c.setCountry(rs.getString("country"));
-
+					c.setContactName(rs.getString("contactName"));
+					
 					list.add(c);
 				}
 
