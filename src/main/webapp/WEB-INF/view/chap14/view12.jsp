@@ -18,6 +18,30 @@
 		last name : <input type="text" name="lastName" value="${employee.lastName }"> <br>
 		<input type="submit" value="수정">
 	</form>
+	
+	<form id="deleteForm1" action="${pageContext.request.contextPath }/Servlet31" method="post">
+		<input type="hidden" name="id" value="${employee.id }">
+		<input id="deleteButton1" class="btn btn-danger" type="submit" value="삭제">
+	</form>
+	
+	<script>
+		document
+			.querySelector("#deleteButton1")
+			.addEventListener("click", function(e) {
+				// event가 더 진행안되게 하는 코드
+				e.preventDefault();
+				console.log("삭제 서브밋 버튼 클릭됨.");
+				console.log("하지만 더이상 진행되지 않도록 함.");
+				
+				let c = confirm("삭제하시겠습니까?");
+				console.log(c);
+				
+				if (c) {
+					document.querySelector("#deleteForm1").submit();
+				}
+			});
+	</script>
+	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

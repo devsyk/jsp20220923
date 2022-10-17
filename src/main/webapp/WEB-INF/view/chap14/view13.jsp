@@ -22,6 +22,23 @@
 		<input type="submit" value="수정">
 		<input type="button" value="초기화" onclick="location.href='${pageContext.request.contextPath }/Servlet30?id=${customer.id }'">
 	</form>
+	
+	<form id="deleteForm1" action="${pageContext.request.contextPath }/Servlet32" method="post">
+		<input type="hidden" name="id" value="${customer.id }">
+		<input id="deleteForm1" class="btn btn-danger" type="submit" value="삭제">
+	</form>
+	
+	<script>
+		document
+			.querySelector("#deleteButton1")
+			.addEventListener("click", function(e) {
+				e.preventDefault();
+				if (confirm("삭제 하시겠습니까?")) {
+					document.querySelector("#deleteForm1").submit();
+				}
+			});
+		
+	</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
